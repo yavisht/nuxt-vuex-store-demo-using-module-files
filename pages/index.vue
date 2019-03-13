@@ -9,9 +9,8 @@
         
         <form @submit.prevent="">
           <div class="form-group">
-            <label for="exampleInputEmail1">Enter a value</label>
-            <input type="number" v-model.number="userIncrementValue" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-            <small id="emailHelp" class="form-text text-muted">Dont worry, we will keep a track of your values on your right. <br> <br> Adding via sync has a delay of 1 second to mimic functionality.<br> Adding via sync will add it instantly.</small>
+            <input type="number" v-model.number="userIncrementValue" class="form-control" placeholder="Enter a value" required>
+            <small class="form-text text-muted">Dont worry, we will keep a track of your values on your right. <br> <br> Adding via sync has a delay of 1 second to mimic functionality.<br> Adding via sync will add it instantly.</small>
           </div>
         </form>
 
