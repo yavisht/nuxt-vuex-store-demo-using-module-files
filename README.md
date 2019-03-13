@@ -1,6 +1,6 @@
 # vuex
 
-> My remarkable Nuxt.js project
+> Nuxt project that implements vuex store using modular files. For more info: https://nuxtjs.org/guide/vuex-store
 
 ## Build Setup
 
