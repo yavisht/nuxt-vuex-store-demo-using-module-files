@@ -1,4 +1,4 @@
-export default {
+export default () =>({
     value : 0,
     lastAdded: []
-}
+})

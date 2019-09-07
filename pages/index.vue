@@ -4,61 +4,77 @@
       <div class="counter col-sm-12">
         <h1>Current Counter Value : {{theCounter}}</h1>
       </div>
-      
+
       <div class="user-inputs col-sm-6">
-        
-        <form @submit.prevent="">
+        <form @submit.prevent>
           <div class="form-group">
-            <input type="number" v-model.number="userIncrementValue" class="form-control" placeholder="Enter a value" required>
-            <small class="form-text text-muted">Dont worry, we will keep a track of your values on your right. <br> <br> Adding via sync has a delay of 1 second to mimic functionality.<br> Adding via sync will add it instantly.</small>
+            <input
+              type="number"
+              v-model.number="userIncrementValue"
+              class="form-control"
+              placeholder="Enter a value"
+              required
+            />
+            <small class="form-text text-muted">
+              Dont worry, we will keep a track of your values on your right.
+              <br />
+              <br />Adding via sync has a delay of 1 second to mimic functionality.
+              <br />Adding via sync will add it instantly.
+            </small>
           </div>
         </form>
 
         <div class="btn-group" role="group" aria-label="Basic example">
-          <button class="btn btn-secondary" @click="addViaAction(userIncrementValue)">Add asynchronously</button><br>
-          <button class="btn btn-secondary" @click="addViaMutation(userIncrementValue)">Add synchronously</button>
-        </div>  
-        
+          <button
+            class="btn btn-secondary"
+            @click="addViaAction(userIncrementValue)"
+          >Add asynchronously</button>
+          <br />
+          <button
+            class="btn btn-secondary"
+            @click="addViaMutation(userIncrementValue)"
+          >Add synchronously</button>
+        </div>
       </div>
-      
+
       <div class="last-added col-sm-6">
         <ul class="list-group">
-          <li class="list-group-item" v-for="(value, index) in theLastAddedValues" :key="index">
-            {{value}}
-          </li>
+          <li
+            class="list-group-item"
+            v-for="(value, index) in theLastAddedValues"
+            :key="index"
+          >{{value}}</li>
         </ul>
-      </div> 
+      </div>
     </div>
-  
   </section>
 </template>
 
 <script>
-
-import { mapGetters, mapMutations, mapActions } from 'vuex'
+import { mapGetters, mapMutations, mapActions } from "vuex";
 
 export default {
-  data () {
+  data() {
     return {
       userIncrementValue: 1
-    }
+    };
   },
   computed: {
     ...mapGetters({
-      theCounter: 'counter/getCounterValue',
-      theLastAddedValues: 'counter/getLastAdded'
+      theCounter: "counter/getCounterValue",
+      theLastAddedValues: "counter/getLastAdded"
     })
   },
   methods: {
     // Should be used for Async operations
     ...mapActions({
-      addViaAction: 'counter/incrementByAction' // map `this.addToCounter()` to `this.$store.dispatch('counter/incrementByAction')`
+      addViaAction: "counter/incrementByAction" // map `this.addToCounter()` to `this.$store.dispatch('counter/incrementByAction')`
     }),
 
     // can use directly for non async but its good practice to use actions
     ...mapMutations({
-      addViaMutation: 'counter/incrementByMutation'
+      addViaMutation: "counter/incrementByMutation"
     })
   }
-}
+};
 </script>
